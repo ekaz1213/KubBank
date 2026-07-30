@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>КубБанк — цифровой банк</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">КубБанк</div>
+      <nav class="nav" id="nav"></nav>
+    </header>
+
+    <main class="container" id="main"></main>
+
+    <aside class="sidebar" id="sidebar">
+      <section class="panel">
+        <h3>Уведомления</h3>
+        <div id="notifications"></div>
+      </section>
+      <section class="panel">
+        <h3>Доска объявлений</h3>
+        <div id="announcements-short"></div>
+        <div style="margin-top:8px"><button id="view-announcements" class="btn">Полная доска</button></div>
+      </section>
+      <section class="panel">
+        <h3>Настройки</h3>
+        <div style="display:flex;gap:8px">
+          <button id="toggle-theme" class="btn">Тема</button>
+          <button id="toggle-lang" class="btn">EN/RU</button>
+        </div>
+        <div style="margin-top:8px"><button id="open-backup" class="btn ghost">Экспорт/Импорт</button></div>
+      </section>
+    </aside>
+
+    <footer class="footer">
+      <div>© КубБанк — демонстрационный интерфейс. Данные хранятся в вашем браузере.</div>
+    </footer>
+  </div>
+
+  <!-- Templates -->
+  <template id="login-template"> ... </template>
+  <template id="register-template"> ... </template>
+  <template id="dashboard-template"> ... </template>
+  <template id="transfer-template"> ... </template>
+  <template id="deposit-template"> ... </template>
+  <template id="history-template"> ... </template>
+  <template id="admin-template"> ... </template>
+
+  <!-- Below templates expanded for new features -->
+  <template id="announcements-template">
+    <section class="panel">
+      <div class="panel-header"><h2>Доска объявлений</h2><div id="ann-actions"></div></div>
+      <div id="ann-list"></div>
+      <div style="margin-top:12px"><button id="ann-back" class="btn ghost">Назад</button></div>
+    </section>
+  </template>
+
+  <template id="templates-template">
+    <section class="panel">
+      <h2>Платёжные шаблоны</h2>
+      <form id="template-form" class="form">
+        <label>Название <input id="tmpl-name" required/></label>
+        <label>Получатель (email) <input id="tmpl-to" /></label>
+        <label>Сумма <input id="tmpl-amount" type="number" step="0.01" /></label>
+        <div class="form-row"><button class="btn primary" type="submit">Сохранить шаблон</button></div>
+      </form>
+      <div id="tmpl-list"></div>
+      <div style="margin-top:12px"><button id="tmpl-back" class="btn ghost">Назад</button></div>
+    </section>
+  </template>
+
+  <template id="cards-template">
+    <section class="panel">
+      <h2>Карты</h2>
+      <div id="cards-list"></div>
+      <div style="margin-top:8px" class="form-row">
+        <button id="create-virtual-card" class="btn">Выпустить виртуальную карту</button>
+        <button id="cards-back" class="btn ghost">Назад</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="support-template">
+    <section class="panel">
+      <h2>Поддержка / Тикеты</h2>
+      <form id="ticket-form" class="form">
+        <label>Тема <input id="ticket-subject" /></label>
+        <label>Сообщение <input id="ticket-body" /></label>
+        <div class="form-row"><button class="btn primary" type="submit">Отправить</button></div>
+      </form>
+      <h3>Мои тикеты</h3>
+      <div id="tickets-list"></div>
+      <div style="margin-top:12px"><button id="support-back" class="btn ghost">Назад</button></div>
+    </section>
+  </template>
+
+  <template id="backup-template">
+    <section class="panel">
+      <h2>Резервная копия / Восстановление</h2>
+      <div class="muted">Экспорт всех данных в JSON и импорт для восстановления.</div>
+      <div style="margin-top:12px">
+        <button id="export-json" class="btn">Скачать JSON</button>
+        <label style="display:block;margin-top:8px">Импорт (вставьте JSON)
+          <textarea id="import-json" style="width:100%;height:120px"></textarea>
+        </label>
+        <div class="form-row">
+          <button id="import-json-btn" class="btn primary">Импортировать</button>
+          <button id="reset-demo" class="btn ghost">Сбросить демо‑данные</button>
+        </div>
+      </div>
+      <div style="margin-top:12px"><button id="backup-back" class="btn ghost">Назад</button></div>
+    </section>
+  </template>
+
+  <!-- Keep original main templates placeholders to be populated by script on load -->
+  <script src="script.js"></script>
+</body>
+</html>
